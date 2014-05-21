@@ -4,18 +4,22 @@
 # include it in this file. Also make sure everything that isn't code
 # is commented in the file.  
 
-# I worked on this challenge [by myself, with: ].
+# I worked on this challenge by myself.
 
 # 1. Pseudocode
 
-# What is the input?
-# What is the output? (i.e. What should the code return?)
-# What are the steps needed to solve the problem?
+#declare method total
+#create array of numbers
+#iterate through the array to add all the numbers
+#return the sum
+
+#declare method sentence_maker
+#create array of strings
+#capitalize first element in array
+#output all strings in a sentence with a period at the end
 
 
 # 2. Initial Solution
-
-
 
 
 # 3. Refactored Solution
