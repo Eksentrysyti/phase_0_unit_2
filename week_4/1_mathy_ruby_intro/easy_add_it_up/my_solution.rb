@@ -21,6 +21,21 @@
 
 # 2. Initial Solution
 
+def total(array)
+	sum = 0
+	array.each { |x| sum += x}
+	puts sum
+end
+
+def sentence_maker(array)
+	array[0].capitalize!
+	array.each { |x| print "#{x} "}
+	print "."
+end
+
+total([1,2,3,4,5])
+
+sentence_maker(["hello", "world", "this", "is", "a", "test"])
 
 # 3. Refactored Solution
 
