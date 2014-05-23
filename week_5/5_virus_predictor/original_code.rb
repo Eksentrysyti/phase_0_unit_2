@@ -2,13 +2,19 @@
 
 # I worked on this challenge by myself.
 
-# EXPLANATION OF require_relative
+# Release 1: EXPLANATION OF require_relative
 
 # require_relative is a statement that imports another file into the current one for use.  This is useful if for example you needed to import data from a separate file for use in the current program.
-#
+
+# Release 2: Analyze state_data
+
+# state_data is a file that stores a hash of all the states.  Each key is a string with the name of the state and each key (state) has values stored for population density, population, region, and regional spread.  There are two hash notations currently available.  One is the hash rocket notation (=>) and the other one (available only in Ruby 1.9 and later) is the colon notation (:).  While the hash rocket can be used with any type of key, the colon notation requires simple symbols for keys.
+
 require_relative 'state_data'
 
 class VirusPredictor
+
+# When an object of class VirusPredictor is created, it it initialized with the values for state, population density, population, region, and regional spread and instance variables are created for each parameter.
 
   def initialize(state_of_origin, population_density, population, region, regional_spread)
     @state = state_of_origin
@@ -18,12 +24,16 @@ class VirusPredictor
     @next_region = regional_spread
   end
 
-  def virus_effects  #HINT: What is the SCOPE of instance variables?
+# virus_effects method calls two other class methods: predicted_deaths and speed_of_spread
+
+  def virus_effects  #HINT: What is the SCOPE of instance variables? Only methods called to this instance can access the values of these variables
     predicted_deaths(@population_density, @population, @state)
     speed_of_spread(@population_density, @state)
   end
 
-  private  #what is this?  what happens if it were cut and pasted above the virus_effects method
+  private  #what is this?  what happens if it were cut and pasted above the virus_effects method?  The private keyword designates any method after it (and before the end of the class declaration) to be only accessible by the current object.  The reciever of a private method is always the current object and cannot be any other object.  If it were moved above the virus_effects method, it would make the method private also.
+
+# Calculates the number of predicted deaths based on population density and prints it to console
 
   def predicted_deaths(population_density, population, state)
     if @population_density >= 200
@@ -41,6 +51,8 @@ class VirusPredictor
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
 
   end
+
+# Calculates the speed of spread in months and prints it to console
 
   def speed_of_spread(population_density, state) #in months
     speed = 0.0
