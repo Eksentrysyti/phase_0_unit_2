@@ -1,9 +1,10 @@
 # U2.W5: Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
+# I worked on this challenge by myself.
 
 # EXPLANATION OF require_relative
-#
+
+# require_relative is a statement that imports another file into the current one for use.  This is useful if for example you needed to import data from a separate file for use in the current program.
 #
 require_relative 'state_data'
 
