@@ -26,17 +26,17 @@ class VirusPredictor
 
 # virus_effects method calls two other class methods: predicted_deaths and speed_of_spread.  There are no variables being passed into this method.  Instead, the necessary variables are passed into the methods inside this method.  It does not make much sense to need to pass any of these variables to the method when the methods already have access to the instance variables!
 
-  def virus_effects  #HINT: What is the SCOPE of instance variables? Only methods called to this instance can access the values of these variables.
+  def virus_effects  #HINT: What is the SCOPE of instance variables?  Instance variables are available to all methods of the instance.  There is no need to pass the instance variables into the instance methods.
 
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    predicted_deaths()
+    speed_of_spread()
   end
 
   private  #what is this?  what happens if it were cut and pasted above the virus_effects method?  The private keyword designates any method after it (and before the end of the class declaration) to be only accessible by the current object.  The reciever of a private method is always the current object and cannot be any other object.  If it were moved above the virus_effects method, it would make the method private also.
 
 # Calculates the number of predicted deaths based on population density and prints it to console
 
-  def predicted_deaths(population_density, population, state)
+  def predicted_deaths()
     if @population_density >= 200
       number_of_deaths = (@population * 0.4).floor
     elsif @population_density >= 150
@@ -55,7 +55,7 @@ class VirusPredictor
 
 # Calculates the speed of spread in months and prints it to console
 
-  def speed_of_spread(population_density, state) #in months
+  def speed_of_spread() #in months
     speed = 0.0
 
     if @population_density >= 200
