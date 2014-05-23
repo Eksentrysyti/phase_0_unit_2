@@ -24,9 +24,10 @@ class VirusPredictor
     @next_region = regional_spread
   end
 
-# virus_effects method calls two other class methods: predicted_deaths and speed_of_spread
+# virus_effects method calls two other class methods: predicted_deaths and speed_of_spread.  There are no variables being passed into this method.  Instead, the necessary variables are passed into the methods inside this method.  It does not make much sense to need to pass any of these variables to the method when the methods already have access to the instance variables!
 
-  def virus_effects  #HINT: What is the SCOPE of instance variables? Only methods called to this instance can access the values of these variables
+  def virus_effects  #HINT: What is the SCOPE of instance variables? Only methods called to this instance can access the values of these variables.
+
     predicted_deaths(@population_density, @population, @state)
     speed_of_spread(@population_density, @state)
   end
