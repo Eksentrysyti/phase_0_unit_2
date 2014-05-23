@@ -8,7 +8,7 @@
 
 # Release 2: Analyze state_data
 
-# state_data is a file that stores a hash of all the states.  Each key is a string with the name of the state and each key (state) has values stored for population density, population, region, and regional spread.  There are two hash notations currently available.  One is the hash rocket notation (=>) and the other one (available only in Ruby 1.9 and later) is the colon notation (:).  While the hash rocket can be used with any type of key, the colon notation requires simple symbols for keys.
+# state_data is a file that stores a hash of all the states.  In the STATE_DATA hash, each key (which is a string with a name of a state) is assigned with the rocket notation (=>) a NESTED hash of data values for population density, population, region, and regional spread using the colon (:) notation.  It can be noted that the colon notation requires that its key be a symbol and can be only used in Ruby 1.9 or later.
 
 require_relative 'state_data'
 
@@ -73,6 +73,13 @@ class VirusPredictor
 
   end
 
+# Release 4 new feature to report all states.  It iterates over all keys in the hash, creates a new object for each state and then calls the virus_effects method on it.
+  STATE_DATA.each_key {|state|
+    state_report = VirusPredictor.new(state, STATE_DATA[state][:population_density],STATE_DATA[state][:population], STATE_DATA[state][:region], STATE_DATA[state][:regional_spread]) 
+    state_report.virus_effects
+  }
+
+
 end
 
 #=======================================================================
@@ -80,7 +87,7 @@ end
 # DRIVER CODE
  # initialize VirusPredictor for each state
 
-
+=begin
 alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population], STATE_DATA["Alabama"][:region], STATE_DATA["Alabama"][:regional_spread]) 
 alabama.virus_effects
 
@@ -92,3 +99,4 @@ california.virus_effects
 
 alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population], STATE_DATA["Alaska"][:region], STATE_DATA["Alaska"][:regional_spread]) 
 alaska.virus_effects
+=end
