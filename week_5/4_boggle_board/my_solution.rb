@@ -102,5 +102,3 @@ p get_col(boggle_board, 1) == ["r", "o", "c", "a"]
 # Reflection 
 
 # This challenge required a little more thought than part 2 since I couldn't just return the nested array found at a row index.  The initial solution outlines the though process in that I just needed to iterate through each line and put whatever I found at the column index into an array, which is then returned.  Upon refactoring, I thought I could use the map method I learned in part 1 to return the array in one go without the need to create a placeholder array and then return it all in one simple move.
-=======
->>>>>>> upstream/master
