@@ -61,8 +61,6 @@ p get_row(boggle_board, 1) == ["i", "o", "d", "t"]
 
 #This part of the challenge was extremely simple once I understood what I needed to accomplish.  While it looked daunting at first, I realized it was simply asking to return the nested array at the specified array location.
 
-
-<<<<<<< HEAD
 #-------------------------------------------------------------------------------
 
 # Part 3: Now write a method that takes a column number and returns all the elements in the column.
