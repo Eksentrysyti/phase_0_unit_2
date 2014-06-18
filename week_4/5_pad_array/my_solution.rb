@@ -21,21 +21,30 @@
 
 class Array
 
-	def pad(min_size, padding_value = nil)
+	def pad!(min_size, padding_value = nil)
 		difference = min_size - self.count
 		difference.times { self << padding_value } if difference > 0
 		self
 	end
 
+	def pad(min_size, padding_value = nil)
+		self.clone.pad!(min_size, padding_value)
+	end
+
 end
 
 p [1, 2, 3, 4, 5].pad(7)
-p [1, 2, 3].pad (7, "test")
+p [1, 2, 3].pad(7, "test")
+
+p [1, 2, 3, 4, 5, 6].pad!(9)
+p [1, 2, 3].pad!(8, "test2")
 
 
 
 # 3. Refactored Solution
 
-
+# Solution is clean and does not need refactoring.
 
 # 4. Reflection 
+
+# This challenge took a bit of time to figure out how to differentiate between #pad and #pad!  I had to do more research on the difference between destructive and non-destructive methods and eventually found that I could use the #clone method to create a non-destructive version of my method.
