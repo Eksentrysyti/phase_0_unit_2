@@ -38,7 +38,7 @@ def separate_comma(num)
 	p string[0...-1].reverse!
 end
 
-p separate_comma(1234567890)
+p separate_comma(12345678900)
 
 # 4. Reflection
 
