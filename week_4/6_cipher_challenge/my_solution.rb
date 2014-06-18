@@ -9,7 +9,7 @@
 # Write your comments on what each thing is doing. 
 # If you have difficulty, go into IRB and play with the methods.
 
-
+=begin
 
 def north_korean_cipher(coded_message)
   input = coded_message.downcase.split("") # Check out this method in IRB to see how it works! Also refer to the ruby docs.
@@ -71,9 +71,39 @@ def north_korean_cipher(coded_message)
   return decoded_sentence # What is this returning?        
 end
 
+=end
+
 # Your Refactored Solution
 
+def north_korean_cipher(coded_message)
+  input = coded_message.downcase.split("") # Check out this method in IRB to see how it works! Also refer to the ruby docs.
+  decoded_sentence = []
 
+  # Change the cipher into an alphabet array instead, since the cipher is a 4 letter shift, simply just shift the index number by 4.  Arrays are ordered by index number, something that hashes don't have.
+  cipher = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  
+  # There is no need to compare a letter in the coded_message to each element in the array, removed nested each statement.  Instead, simply use the #include? method to find if it exists in the array.
+
+  input.each {|x|
+    if cipher.include?(x)
+      # If found in the array, replace with letter 4 places ahead.  For letters found near beginning of the array, negative indices will wrap around to the end of the array properly.
+      decoded_sentence << cipher[cipher.index(x) - 4]
+    elsif x == "@" || x == "#" || x == "$" || x == "%"|| x == "^" || x == "&"|| x =="*"
+      # For these symbols, replace with whitespace instead
+      decoded_sentence << " "
+    else
+      # The original had separate else and if not clauses to handle numbers and symbols not included in the above cases.  They can be clumped together to be handled by this one else clause.
+      decoded_sentence << x
+    end
+  }
+
+  decoded_sentence = decoded_sentence.join("")
+ 
+  if decoded_sentence.match(/\d+/) #What is this matching? Look at Rubular for help.  Matching for 1 or more digits.  Basically looking for numbers 
+    decoded_sentence.gsub!(/\d+/) { |num| num.to_i / 100 } #He's been known to exaggerate... If numbers are found, divide by 100 and replace it.
+  end  
+  return decoded_sentence # What is this returning?        
+end
 
 
 
@@ -87,4 +117,6 @@ p north_korean_cipher("ribx^wxst:$wsyxl%osvie,$xlir$neter,#xlir%xli%asvph!")
 p north_korean_cipher("ger^wsqifshc*nywx^kix^qi&10000*fekw@sj$gssp%vergl@hsvmxsw?")
 
 # Reflection
+
+# The hardest part of the challenge is going through the original code and figuring out what each part was trying to do.  There was a lot of redundancy and roundabout ways of doing things in this piece of code and it took a bit of commenting to figure out the purpose of each line.  Once the purpose of each section was figured out, it was simple to cut out redundancy and trying to combine tasks into one.
  
