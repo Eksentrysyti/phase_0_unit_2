@@ -8,7 +8,7 @@
 
 # 1. Pseudocode
 
-# What is the input? An array, the min size of the output array, and an optional padding value
+# What is the input? The min size of the output array, and an optional padding value
 # What is the output? (i.e. What should the code return?) An array that is at least the size of the input array.  Any added values will be the specified padding value or nil if not specified
 # What are the steps needed to solve the problem?
 # => Create #pad method that takes up to 2 parameters
@@ -19,6 +19,18 @@
 
 # 2. Initial Solution
 
+class Array
+
+	def pad(min_size, padding_value = nil)
+		difference = min_size - self.count
+		difference.times { self << padding_value } if difference > 0
+		self
+	end
+
+end
+
+p [1, 2, 3, 4, 5].pad(7)
+p [1, 2, 3].pad (7, "test")
 
 
 
